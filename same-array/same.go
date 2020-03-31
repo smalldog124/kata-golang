@@ -9,5 +9,5 @@ func Comp(array1 []int, array2 []int) bool {
 			return false
 		}
 	}
-	return true
+	return (array1[lenth] * array1[lenth]) == array2[0]
 }
