@@ -1,16 +1,25 @@
 package same
 
 func Comp(array1 []int, array2 []int) bool {
-	if len(array1) == 0 || len(array2) == 0 {
+	lenthArray1 := len(array1)
+	lenthArray2 := len(array2)
+	if lenthArray1 == 0 || lenthArray2 == 0 {
 		return false
 	}
-	lenth := len(array1) - 1
-	for i := 0; i < lenth; i++ {
-		n := array1[i]
+	arrayMap := makeMap(array2)
+	for _, n := range array1 {
 		multi := n * n
-		if multi != array2[i+1] {
+		_, ok := arrayMap[multi]
+		if !ok {
 			return false
 		}
 	}
-	return (array1[lenth] * array1[lenth]) == array2[0]
+	return true
+}
+func makeMap(array []int) map[int]int {
+	arrayMap := make(map[int]int)
+	for _, v := range array {
+		arrayMap[v] = v
+	}
+	return arrayMap
 }
